@@ -1,0 +1,12 @@
+{
+    "name": "bogardo/markdown-codepen",
+    "require": {
+        "cebe/markdown": "*"
+    },
+    "authors": [
+        {
+            "name": "Bogardo",
+            "email": "chrisbogaards@gmail.com"
+        }
+    ]
+}
