@@ -22,36 +22,36 @@ class Markdown extends GithubMarkdown
 	}
 
 	/**
-    * Codepen identifier
-    */
+	* Codepen identifier
+	*/
 	protected function identifyLine($lines, $current)
-    {
-        if (strncmp($lines[$current], 'codepen[', 8) === 0) {
-            return 'Codepen';
-        }
+	{
+		if (strncmp($lines[$current], 'codepen[', 8) === 0) {
+			return 'Codepen';
+		}
 
-        return parent::identifyLine($lines, $current);
-    }
+		return parent::identifyLine($lines, $current);
+	}
 
-    /**
-     * Codepen Consumer
-     * 
-     * @param  array $lines 	All lines in document
-     * @param  int $current 	Current line
-     * @return array 			An array of a block and linenumber to continue consuming
-     */
+	/**
+	 * Codepen Consumer
+	 * 
+	 * @param  array $lines 	All lines in document
+	 * @param  int $current 	Current line
+	 * @return array 			An array of a block and linenumber to continue consuming
+	 */
 	protected function consumeCodepen($lines, $current)
 	{
 		$block = [
-	        'type' 		=> 'Codepen',
-	        'content' 	=> [],
-	        'pen' 		=> false,
-	        'height' 	=> false,
-	        'tab' 		=> false,
-	        'theme' 	=> false
-	    ];
+			'type' 		=> 'Codepen',
+			'content' 	=> [],
+			'pen' 		=> false,
+			'height' 	=> false,
+			'tab' 		=> false,
+			'theme' 	=> false
+		];
 
-	    $line 	 = rtrim($lines[$current]);
+		$line 	 = rtrim($lines[$current]);
 		$matches = false;
 
 		/**
@@ -76,8 +76,8 @@ class Markdown extends GithubMarkdown
 		if (isset($matches[8])) {
 			$block['theme']	 = $matches[8];
 		}
-	    
-	    return [$block, $current++];
+		
+		return [$block, $current++];
 	}
 
 	/**
