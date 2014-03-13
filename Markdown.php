@@ -62,19 +62,19 @@ class Markdown extends GithubMarkdown
 		 *  The active tab        - (optional) A string equal to one of four options; 'html', 'css', 'js' or 'result', between brackets.
 		 *  The theme for the pen - (optional) An integer with a minimum length of 1 and a maximum of 6, between brackets.
 		 */
-		$regex = "/^codepen(\[([A-z]{4,8})\])(\[(\d{2,5})\])(\[(html|css|js|result)\])?(\[(\d{1,6})\])?$/";
+		$regex = "/^codepen(?:\[([A-z]{4,8})\])(?:\[(\d{2,5})\])(?:\[(html|css|js|result)\])?(?:\[(\d{1,6})\])?$/";
 		preg_match($regex, $line, $matches);
+		  	
+		if (count($matches) < 3) return [$block, $current++];
 
-		if (count($matches) < 5) return [$block, $current++];
+		$block['pen'] = $matches[1];
+		$block['height'] = $matches[2];
 
-		$block['pen'] 	 = $matches[2];
-		$block['height'] = $matches[4];
-
-		if (isset($matches[6])) {
-			$block['tab']	 = $matches[6];
+		if (isset($matches[3])) {
+			$block['tab']	= $matches[3];
 		}
-		if (isset($matches[8])) {
-			$block['theme']	 = $matches[8];
+		if (isset($matches[4])) {
+			$block['theme']	= $matches[4];
 		}
 		
 		return [$block, $current++];
