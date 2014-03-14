@@ -1,7 +1,7 @@
 Bogardo\markdown-codepen
 ================
 
-An renderer for [cebe/markdown](https://github.com/cebe/markdown) to provide a shortcode to include codepens from http://codepen.io/ in your Markdown file.
+An extension for [cebe/markdown](https://github.com/cebe/markdown) to provide a shortcode to embed codepens from http://codepen.io/ in your Markdown.
 
 
 ### Syntax ###
